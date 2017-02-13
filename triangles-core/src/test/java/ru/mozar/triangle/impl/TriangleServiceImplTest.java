@@ -69,7 +69,7 @@ public class TriangleServiceImplTest extends TestCase {
          * If null - no exception must be generated
          */
         String exceptionMessageSubstring = null;
-        public Invariant setExceptionMessageSubstring(String exceptionMessageSubstring) {
+        Invariant setExceptionMessageSubstring(String exceptionMessageSubstring) {
             this.exceptionMessageSubstring = exceptionMessageSubstring;
             return this;
         }

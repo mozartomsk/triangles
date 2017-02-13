@@ -11,7 +11,7 @@
 
     <modules>
         <module>triangles-core</module>
-        <module>runners</module>
+        <module>triangles-runners</module>
     </modules>
 
     <build>
@@ -35,6 +35,12 @@
                 <artifactId>triangles-core</artifactId>
                 <version>1.0.0</version>
             </dependency>
+            <dependency>
+                <groupId>ru.mozar.triangles</groupId>
+                <artifactId>triangles-logo</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>junit</groupId>

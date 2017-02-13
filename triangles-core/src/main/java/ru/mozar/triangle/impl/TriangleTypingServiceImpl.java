@@ -1,9 +1,11 @@
 package ru.mozar.triangle.impl;
 
+import com.google.common.base.Preconditions;
 import org.springframework.stereotype.Service;
 import ru.mozar.triangle.api.Triangle;
 import ru.mozar.triangle.api.TriangleTypingService;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static ru.mozar.triangle.api.TriangleTypingService.TriangleType.equilateral;
 import static ru.mozar.triangle.api.TriangleTypingService.TriangleType.isosceles;
@@ -19,6 +21,7 @@ class TriangleTypingServiceImpl implements TriangleTypingService {
     @Override
     public TriangleType typeTriangle(Triangle triangle) {
         checkNotNull(triangle, "[triangle] required");
+        checkArgument(triangle instanceof TriangleImpl, "[triangle] must be instance of TriangleImpl");
 
         if (triangle.getA() == triangle.getB() && triangle.getB() == triangle.getC()) {
             return equilateral;

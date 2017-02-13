@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class Response<T> {
 
-    private enum Status { success, fail }
+    private enum Status { success, badRequest, internalError}
 
     private final Status status;
     private final T data;
@@ -27,7 +27,11 @@ public class Response<T> {
         return new ResponseEntity<>(new Response<>(Status.success, data, null), HttpStatus.OK);
     }
 
-    public static <T> ResponseEntity<Response<T>> fail(String errorMessage) {
-        return new ResponseEntity<>(new Response<>(Status.fail, null, errorMessage), HttpStatus.BAD_REQUEST);
+    public static <T> ResponseEntity<Response<T>> badRequest(String errorMessage) {
+        return new ResponseEntity<>(new Response<>(Status.badRequest, null, errorMessage), HttpStatus.BAD_REQUEST);
+    }
+
+    public static <T> ResponseEntity<Response<T>> internalError(String errorMessage) {
+        return new ResponseEntity<>(new Response<>(Status.internalError, null, errorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -46,7 +46,7 @@ public class TriangleTypingServiceImplTest {
     public void test() {
         assertNotNull("[invariant] required", invariant);
 
-        Triangle triangle = mock(Triangle.class);
+        Triangle triangle = mock(TriangleImpl.class);
 
         when(triangle.getA()).thenReturn(invariant.a);
         when(triangle.getB()).thenReturn(invariant.b);

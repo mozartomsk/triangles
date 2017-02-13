@@ -11,7 +11,7 @@ import ru.mozar.triangle.api.TriangleTypingService;
 
 @RestController
 @Log4j
-public class TriangleController {
+public class TriangleResource {
 
     @Autowired
     private TriangleService triangleService;
@@ -24,9 +24,11 @@ public class TriangleController {
         log.debug("/triangle: a: " + a + ", b : " + b + ", c: " + c);
         try {
             return Response.success(triangleTypingService.typeTriangle(triangleService.createAndValidate(a, b, c)).name());
+        } catch (IllegalArgumentException e) {
+            return Response.badRequest(e.getMessage());
         } catch (Throwable e) {
             log.error(e.getMessage(), e);
-            return Response.fail(e.getMessage());
+            return Response.internalError(e.getMessage());
         }
     }
 }

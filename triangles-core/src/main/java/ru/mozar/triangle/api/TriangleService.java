@@ -13,10 +13,10 @@ public interface TriangleService {
      *
      * @return generated triangle.
      */
-    Triangle createAndValidate(double a, double b, double c) throws TriangleRuntimeException;
+    Triangle createAndValidate(double a, double b, double c) throws IllegalArgumentException;
 
     /**
      * Validate given triangle to check if it correct triangle.
      */
-    void validate(Triangle triangle) throws TriangleRuntimeException;
+    void validate(Triangle triangle) throws IllegalArgumentException;
 }

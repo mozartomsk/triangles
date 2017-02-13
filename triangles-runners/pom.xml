@@ -10,7 +10,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>runners</artifactId>
+    <artifactId>triangles-runners</artifactId>
     <name>Runners root module</name>
 
     <packaging>pom</packaging>
@@ -18,5 +18,6 @@
     <modules>
         <module>triangles-args-runner</module>
         <module>triangles-ws-runner</module>
+        <module>triangles-logo</module>
     </modules>
 </project>

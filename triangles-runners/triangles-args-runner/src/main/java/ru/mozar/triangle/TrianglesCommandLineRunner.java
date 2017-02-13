@@ -40,12 +40,18 @@ public class TrianglesCommandLineRunner {
 
             @Override
             public void run(String... args) throws Exception {
-                double a = readDouble(args, 0);
-                double b = readDouble(args, 1);
-                double c = readDouble(args, 2);
+                Triangle triangle;
+                try {
+                    double a = readDouble(args, 0);
+                    double b = readDouble(args, 1);
+                    double c = readDouble(args, 2);
 
-                Triangle triangle = triangleService.createAndValidate(a, b, c);
-                System.out.println("Triangle: " + triangle);
+                    triangle = triangleService.createAndValidate(a, b, c);
+                    System.out.println("Triangle: " + triangle);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Bad incomming data, error message: " + e.getMessage());
+                    return;
+                }
 
                 System.out.println("Type: " + triangleTypingService.typeTriangle(triangle));
             }
@@ -54,7 +60,7 @@ public class TrianglesCommandLineRunner {
 
     private double readDouble(String[] args, int i) {
         if (args.length <= i) {
-            throw new IllegalArgumentException(String.format("No value for %d triangle side!", i));
+            throw new IllegalArgumentException(String.format("No value for %d triangle side!", i + 1));
         }
         String valueString = args[i];
         if (isBlank(valueString)) {

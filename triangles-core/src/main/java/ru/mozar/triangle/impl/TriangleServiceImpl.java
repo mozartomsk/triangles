@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import javafx.util.Pair;
 import org.springframework.stereotype.Service;
 import ru.mozar.triangle.api.Triangle;
-import ru.mozar.triangle.api.TriangleRuntimeException;
 import ru.mozar.triangle.api.TriangleService;
 
 import java.util.Arrays;
@@ -18,14 +17,14 @@ import java.util.List;
 class TriangleServiceImpl implements TriangleService {
 
     @Override
-    public Triangle createAndValidate(double a, double b, double c) throws TriangleRuntimeException {
+    public Triangle createAndValidate(double a, double b, double c) {
         Triangle result = new TriangleImpl(a, b, c);
         validate(result);
         return result;
     }
 
     @Override
-    public void validate(Triangle triangle) throws TriangleRuntimeException {
+    public void validate(Triangle triangle) {
         Preconditions.checkNotNull(triangle, "[triangle] required");
         Preconditions.checkArgument(triangle instanceof TriangleImpl, "[triangle] must be instance of TriangleImpl");
 
@@ -43,14 +42,14 @@ class TriangleServiceImpl implements TriangleService {
 
     private void checkSummLessThird(Pair<String, Double> sideToCheck, Pair<String, Double> sideToSum1, Pair<String, Double> sideToSum2) {
         if (sideToCheck.getValue() > sideToSum1.getValue() + sideToSum2.getValue()) {
-            throw new TriangleRuntimeException("Side " + sideToCheck.getKey() + " is greater than sum of two others: " +
+            throw new IllegalArgumentException("Side " + sideToCheck.getKey() + " is greater than sum of two others: " +
                     sideToCheck.getValue() + " > " + sideToSum1.getValue() + " + " + sideToSum2.getValue());
         }
     }
 
     private void checkGtZero(Pair<String, Double> side) {
         if (side.getValue() < 0d) {
-            throw new TriangleRuntimeException("Side " + side.getKey() + " can not be less than zero: " + side.getValue());
+            throw new IllegalArgumentException("Side " + side.getKey() + " can not be less than zero: " + side.getValue());
         }
     }
 }

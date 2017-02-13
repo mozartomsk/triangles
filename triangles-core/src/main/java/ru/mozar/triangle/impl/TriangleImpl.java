@@ -3,6 +3,7 @@ package ru.mozar.triangle.impl;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import ru.mozar.triangle.api.Triangle;
 
 /**
@@ -12,8 +13,8 @@ import ru.mozar.triangle.api.Triangle;
  * Implementation of Triangle. Separated implementation is required for control of instances generation.
  */
 @Data
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TriangleImpl implements Triangle {
 
-    private double a,b,c;
+    private final double a,b,c;
 }

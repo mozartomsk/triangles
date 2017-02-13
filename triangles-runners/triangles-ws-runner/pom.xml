@@ -3,14 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>runners</artifactId>
+        <artifactId>triangles-runners</artifactId>
         <groupId>ru.mozar.triangles</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>triangles-args-runner</artifactId>
-    <name>Triangles args command line application runner</name>
+    <artifactId>triangles-ws-runner</artifactId>
 
     <build>
         <plugins>
@@ -20,7 +19,7 @@
                 <configuration>
                     <filesets>
                         <fileset>
-                            <directory>${project.basedir}/../../argsrunner</directory>
+                            <directory>${project.basedir}/../../wsrunner</directory>
                         </fileset>
                     </filesets>
                 </configuration>
@@ -34,7 +33,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.basedir}/../../argsrunner/lib</outputDirectory>
+                            <outputDirectory>${project.basedir}/../../wsrunner/lib</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -44,7 +43,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <outputDirectory>${project.basedir}/../../argsrunner</outputDirectory>
+                    <outputDirectory>${project.basedir}/../../wsrunner</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
@@ -56,12 +55,14 @@
             <artifactId>triangles-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
+            <groupId>ru.mozar.triangles</groupId>
+            <artifactId>triangles-logo</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
 </project>
