@@ -8,9 +8,16 @@ package ru.mozar.triangle.api;
  */
 public interface TriangleTypingService {
 
+    /**
+     * Type of Triangle <br/>
+     * If triangle is equilateral, this is isosceles as well. In this case service returns <b>equilateral</b>.
+     */
     enum TriangleType {
         equilateral, isosceles, scalene;
     }
 
+    /**
+     * Determine type of given triangle.
+     */
     TriangleType typeTriangle(Triangle triangle);
 }

@@ -2,6 +2,7 @@ package ru.mozar.triangle.impl;
 
 import com.google.common.base.Preconditions;
 import javafx.util.Pair;
+import org.springframework.stereotype.Service;
 import ru.mozar.triangle.api.Triangle;
 import ru.mozar.triangle.api.TriangleRuntimeException;
 import ru.mozar.triangle.api.TriangleService;
@@ -13,6 +14,7 @@ import java.util.List;
  * @author mozar
  * @since 1.0.0
  */
+@Service
 class TriangleServiceImpl implements TriangleService {
 
     @Override
