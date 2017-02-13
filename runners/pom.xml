@@ -17,5 +17,6 @@
 
     <modules>
         <module>triangles-args-runner</module>
+        <module>triangles-ws-runner</module>
     </modules>
 </project>

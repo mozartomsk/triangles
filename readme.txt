@@ -11,10 +11,13 @@ Task:
 
 
 
-
 Project structure:
 
 - Triangle core: The core functional module, containing spring beans, that implements logic, tests.
 - Runners: modules to run functional in some certain environment.
   - Triangles agrs runner: run program as a command line application that gets triangle sides as application arguments.
     to run: exec command: "java -cp 'argsrunner/*:argsrunner/lib/*' ru.mozar.triangle.TrianglesCommandLineRunner 1 2 3"
+  - Triangles WebService runner: runs web service, that gets triangle side lengths, and returns wrapped answer.
+    to run server: java -cp 'wsrunner/*:wsrunner/lib/*' ru.mozar.triangle.TrianglesWebServiceRunner
+    if you have to change port (as well as any springBoot property) use:
+        java -cp 'wsrunner/*:wsrunner/lib/*' ru.mozar.triangle.TrianglesWebServiceRunner --server.port=8888
